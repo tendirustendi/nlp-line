@@ -45,10 +45,21 @@ public class nlpLine extends SpringBootServletInitializer {
         String pesan = messageEvent.getMessage().getText().toLowerCase();
         String[] pesanSplit = pesan.split(" ");
         if(pesanSplit[0].equals("apakah")){
-//            String jawaban = getRandomJawaban();
-//            String replyToken = messageEvent.getReplyToken();
-//            balasChatDenganRandomJawaban(replyToken, jawaban);
+            String jawaban = getRandomJawaban();
+            String replyToken = messageEvent.getReplyToken();
+            balasChatDenganRandomJawaban(replyToken, jawaban);
         }
+    }
+    
+    private String getRandomJawaban(){
+        String jawaban = "";
+        int random = new Random().nextInt();
+        if(random%2==0){
+            jawaban = "Ya";
+        } else{
+            jawaban = "Nggak";
+        }
+        return jawaban;
     }
     
     private void balasChatDenganRandomJawaban(String replyToken, String jawaban){
